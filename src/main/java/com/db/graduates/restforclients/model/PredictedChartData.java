@@ -18,10 +18,10 @@ public class PredictedChartData{
     @Id
     private String id;
     private Instant date;
-    private long high;
-    private long low;
-    private long open;
-    private long close;
-    private long volume;
-    private long value;
+    private double high;
+    private double low;
+    private double open;
+    private double close;
+    private double volume;
+    private double value;
 }

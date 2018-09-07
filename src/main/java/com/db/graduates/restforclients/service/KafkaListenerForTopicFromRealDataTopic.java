@@ -27,7 +27,7 @@ public class KafkaListenerForTopicFromRealDataTopic {
     private ObjectMapper objectMapper = new ObjectMapper();
 
     @SneakyThrows
-    @KafkaListener(id="receiver1", topics = "${kafka.consumer.topic}", groupId = "${kafka.consumer.group-id}", containerFactory = "kafkaListenerContainerFactory")
+    @KafkaListener(topics = "${kafka.consumer.topic}", groupId = "${kafka.consumer.group-id}")
     public void listen(String str) {
         log.info("TEST Received Messasge in group foo: " + str);
         Message message = objectMapper.readValue(str, Message.class);

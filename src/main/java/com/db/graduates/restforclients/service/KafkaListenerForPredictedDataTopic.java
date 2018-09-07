@@ -26,7 +26,7 @@ public class KafkaListenerForPredictedDataTopic {
     private ObjectMapper objectMapper = new ObjectMapper();
 
     @SneakyThrows
-    @KafkaListener(id="receiver2", topics = "pred", groupId = "${kafka.consumer.group-id}", containerFactory = "kafkaListenerContainerFactory")
+    @KafkaListener( topics = "pred", groupId = "${kafka.consumer.group-id}")
     public void listen(String str) {
         log.info("PRED Received Messasge in group foo: " + str);
         Message message = objectMapper.readValue(str, Message.class);
