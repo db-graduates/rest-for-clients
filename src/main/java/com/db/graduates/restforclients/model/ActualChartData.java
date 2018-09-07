@@ -16,11 +16,12 @@ import java.time.Instant;
 @NoArgsConstructor
 public class ActualChartData {
     @Id
-    public String id;
-    public Instant date;
-    public long high;
-    public long low;
-    public long open;
-    public long close;
-    public long volume;
+    private String id;
+    private Instant date;
+    private long high;
+    private long low;
+    private long open;
+    private long close;
+    private long volume;
+    private long value;
 }

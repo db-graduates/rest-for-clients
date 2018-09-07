@@ -1,6 +1,5 @@
 package com.db.graduates.restforclients.dao;
 
-import com.db.graduates.restforclients.model.ActualChartData;
 import com.db.graduates.restforclients.model.PredictedChartData;
 import org.springframework.data.mongodb.repository.MongoRepository;
 

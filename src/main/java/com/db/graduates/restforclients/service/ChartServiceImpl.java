@@ -12,6 +12,10 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import java.time.Instant;
 import java.util.List;
+import java.util.Random;
+
+import static java.time.temporal.ChronoUnit.DAYS;
+import static java.time.temporal.ChronoUnit.MINUTES;
 
 @Service
 @RequiredArgsConstructor
@@ -22,12 +26,49 @@ public class ChartServiceImpl implements ChartService {
 
     @PostConstruct
     public void init(){
-        PredictedChartData chartData = PredictedChartData.builder()
-                .high(1)
-                .low(2)
-                .date(Instant.now())
-                .build();
-        predictedChartDao.save(chartData);
+//        Instant date = Instant.now().plus(1, DAYS);
+//        ActualChartData aChartData;
+//        PredictedChartData pChartData;
+//        Instant newDate = date;
+//        long open, close, low, high, volume, value;
+//
+//        for (int i = 0; i < 200; i++) {
+//            newDate = newDate.plus(5, MINUTES);
+//            open = Math.round( Math.random() * ( 30 ) + 100 );
+//            close = open + Math.round( Math.random() * ( 15 ) - Math.random() * 10 );
+//            if ( open < close ) {
+//                low = open - Math.round( Math.random() * 5 );
+//                high = close + Math.round( Math.random() * 5 );
+//            } else {
+//                low = close - Math.round( Math.random() * 5 );
+//                high = open + Math.round( Math.random() * 5 );
+//            }
+//
+//           volume = Math.round( Math.random() * ( 1000 + i ) ) + 100 + i;
+//           value = Math.round( Math.random() * ( 30 ) + 100 );
+//
+//            pChartData = PredictedChartData.builder()
+//                    .high(high)
+//                    .low(low)
+//                    .open(open)
+//                    .close(close)
+//                    .volume(volume)
+//                    .value(value)
+//                    .date(newDate)
+//                    .build();
+//            aChartData = ActualChartData.builder()
+//                    .high(high)
+//                    .low(low)
+//                    .open(open)
+//                    .close(close)
+//                    .volume(volume)
+//                    .value(value)
+//                    .date(newDate)
+//                    .build();
+//
+//            predictedChartDao.save(pChartData);
+//            actualChartDao.save(aChartData);
+//        }
     }
 
     @Override
@@ -36,9 +77,4 @@ public class ChartServiceImpl implements ChartService {
         List<PredictedChartData> predictedData = predictedChartDao.findByDateBetween(dateFrom, dateTo);
         return new DiffChartData(actualData, predictedData);
     }
-
-    public static void main(String[] args) {
-        System.out.println(Instant.now());
-    }
-
 }
